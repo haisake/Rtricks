@@ -1,5 +1,40 @@
-#manual hard coded table example
+#purpose: Manuall import a table
+# also create a relational format
 
+#this is how we can hard code a table in an R script and load it in as a data frame
+l <- readr::read_delim(
+  '  Monday  |  Tuesday  | Wednesday  | Thursday | Friday  | Saturday | Sunday   | DaysWorked
+    # ---------------------------------------------------------------------------------------
+        1    |     1     |     1      |     1    |    1    |    0     |    0     |     5
+        0    |     1     |     1      |     1    |    1    |    1     |    0     |     5
+        0    |     0     |     1      |     1    |    1    |    1     |    1     |     5
+        1    |     0     |     0      |     1    |    1    |    1     |    1     |     5
+        1    |     1     |     0      |     0    |    1    |    1     |    1     |     5
+        1    |     1     |     1      |     0    |    0    |    1     |    1     |     5
+        1    |     1     |     1      |     1    |    0    |    0     |    1     |     5
+        1    |     1     |     1      |     1    |    1    |    0     |    1     |     5
+        0    |     0     |     0      |     1    |    1    |    1     |    1     |     4
+        1    |     0     |     0      |     0    |    1    |    1     |    1     |     4
+        1    |     1     |     0      |     0    |    0    |    1     |    1     |     4
+        1    |     1     |     1      |     0    |    0    |    0     |    1     |     4
+        1    |     1     |     1      |     1    |    0    |    0     |    0     |     4
+        0    |     1     |     1      |     1    |    1    |    0     |    0     |     4
+        0    |     0     |     1      |     1    |    1    |    1     |    0     |     4
+        0    |     0     |     0      |     0    |    1    |    1     |    1     |     3
+        1    |     0     |     0      |     0    |    0    |    1     |    1     |     3
+        1    |     1     |     0      |     0    |    0    |    0     |    1     |     3
+        1    |     1     |     1      |     0    |    0    |    0     |    0     |     3
+        0    |     1     |     1      |     1    |    0    |    0     |    0     |     3
+        0    |     0     |     1      |     1    |    1    |    0     |    0     |     3
+        0    |     0     |     0      |     1    |    1    |    1     |    0     |     3',
+  trim_ws = TRUE, comment="#", delim="|")
+
+library(data.table)
+long <- melt(setDT(wide), id.vars = c("Code","Country"), variable.name = "year")
+
+
+
+#this is how we can hard code a table in an R script and load it in as a data frame
 l <- readr::read_delim(
   '  Monday  |  Tuesday  | Wednesday  | Thursday | Friday  | Saturday | Sunday   | DaysWorked
     # ---------------------------------------------------------------------------------------
