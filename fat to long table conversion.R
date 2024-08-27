@@ -29,6 +29,8 @@ for(ii in 1:length(s)){
   }
 }
 
+y$var <- gsub("."," ", y$var, fixed=TRUE)
+
 write.csv(x  =y, file = "reshaped_categories.csv")
 
 
